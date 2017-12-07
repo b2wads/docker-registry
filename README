@@ -1,20 +1,4 @@
 
-HOW TO ADD/EDIT A USER'S PASSWORD:
-
-1. install apache2-utils
-2. htpasswd account.htpasswd {username}
-
-
-HOW TO VERIFY A GIVEN PASSWORD:
-
-1. Open the account.htpasswd file and find what user you cant to check
-2. Find what algorithm to use: Characters between the first and second dollar signs (exclude)
-3. Get the salt: Characters between the second and the third dollar sings (exclude)
-4. Run `openssl passwd -{algorithm} -salt {salt} {plainpassword}`
-5. Check the output inside the account.htpasswd file
-
-
-
 ENVs necessárias para essa imagem
 ==================================
 
