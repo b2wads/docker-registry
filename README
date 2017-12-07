@@ -1,0 +1,13 @@
+
+ENVs necessárias para essa imagem
+==================================
+
+* REGISTRY_STORAGE_CACHE_ENABLE: Adiciona a seção de opções de cache de storage. Por enquando o unico cache possível é o redis.
+* REGISTRY_STORAGE_FILESYSTEM_ENABLE: Habilita o storage no filesystem
+* REGISTRY_STORAGE_FILESYSTEM_ROOT_DIR: indica qual a pasta no filesystem que será usada para guardar as imagens.
+* REGISTRY_REDIS_ADDRESS: Indica o endereço (IP:PORTA) do redis que será usado como cache
+* REGISTRY_STORAGE_S3_ENABLE: Habilita o storage do S3.
+    * REGISTRY_STORAGE_S3_ACCESS_KEY_ID
+    * REGISTRY_STORAGE_S3_ACCESS_KEY_SECRET
+    * REGISTRY_STORAGE_S3_REGION
+    * REGISTRY_STORAGE_S3_BUCKET

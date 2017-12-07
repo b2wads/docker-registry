@@ -1,0 +1,47 @@
+version: 0.1
+auth:
+  htpasswd:
+    realm: auth-realm
+    path: {{.REGISTRY_AUTH_FILE}}
+log:
+    level: error
+    formatter: json
+    fields:
+        service: registry
+storage:
+{{ if .REGISTRY_STORAGE_CACHE_ENABLE }}
+    cache:
+        blobdescriptor: redis
+{{ end }}
+
+{{if .REGISTRY_STORAGE_FILESYSTEM_ENABLE }}
+    filesystem:
+    {{if .REGISTRY_STORAGE_FILESYSTEM_ROOT_DIR }}
+        rootdirectory: {{.REGISTRY_STORAGE_FILESYSTEM_ROOT_DIR}}
+    {{else}}
+        rootdirectory: /var/lib/registry
+  {{end}}
+{{end}}
+
+{{ if .REGISTRY_STORAGE_S3_ENABLE }}
+    s3:
+        accesskey: {{.REGISTRY_STORAGE_S3_ACCESS_KEY_ID}}
+        secretkey: {{.REGISTRY_STORAGE_S3_ACCESS_KEY_SECRET}}
+        region: {{.REGISTRY_STORAGE_S3_REGION}}
+        bucket: {{.REGISTRY_STORAGE_S3_BUCKET}}
+        encrypt: false
+        secure: true
+        v4auth: false
+        chunksize: 5242880
+        rootdirectory: images
+{{ end }}
+
+    delete:
+        enabled: true
+
+{{ if .REGISTRY_STORAGE_CACHE_ENABLE }}
+redis:
+    addr: {{.REGISTRY_REDIS_ADDRESS}}
+{{ end }}
+http:
+    addr: :80
