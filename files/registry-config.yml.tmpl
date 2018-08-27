@@ -1,13 +1,19 @@
 version: 0.1
-auth:
-  htpasswd:
-    realm: auth-realm
-    path: {{.REGISTRY_AUTH_FILE}}
+
+{{ if .DOCKER_REGISTRY_ENABLE_JSON_LOGS }}
 log:
-    level: error
-    formatter: json
-    fields:
-        service: registry
+  accesslog:
+    disabled: true
+  {{ if .REGISTRY_LOG_LEVEL }}
+  level: {{.REGISTRY_LOG_LEVEL}}
+  {{ else }}
+  level: info
+  {{ end }}
+  formatter: json
+  fields:
+      service: registry
+{{ end }}
+
 storage:
 {{ if .REGISTRY_STORAGE_CACHE_ENABLE }}
     cache:

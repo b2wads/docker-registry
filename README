@@ -11,3 +11,5 @@ ENVs necessárias para essa imagem
     * REGISTRY_STORAGE_S3_ACCESS_KEY_SECRET
     * REGISTRY_STORAGE_S3_REGION
     * REGISTRY_STORAGE_S3_BUCKET
+* DOCKER_REGISTRY_ENABLE_JSON_LOGS: Habilita a geração de logs em formato JSON
+* REGISTRY_LOG_LEVEL: Define o level desses logs JSON, defaults to "info"
