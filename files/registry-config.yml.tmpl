@@ -1,5 +1,10 @@
 version: 0.1
 
+auth:
+  htpasswd:
+    realm: auth-realm
+    path: {{.REGISTRY_AUTH_FILE}}
+
 {{ if .DOCKER_REGISTRY_ENABLE_JSON_LOGS }}
 log:
   accesslog:
