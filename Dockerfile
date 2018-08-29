@@ -1,9 +1,8 @@
 FROM registry:2.1.1
 
-#Version: 0.0.1
+#Version: 0.2.0-rc1
 #Tag: sieve/registry
 
-COPY files/registry-config.yml.tmpl /etc
 WORKDIR /etc/docker/registry
 WORKDIR /
 
@@ -16,4 +15,5 @@ ENTRYPOINT ["/e" \
   , "--" \
 ]
 
+COPY files/registry-config.yml.tmpl /etc
 CMD ["/bin/registry", "/etc/docker/registry/config.yml"]
