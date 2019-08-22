@@ -1,6 +1,6 @@
-FROM registry:2.1.1
+FROM registry:2.7
 
-#Version: 0.2.0
+#Version: 0.3.0
 #Tag: sieve/registry
 
 WORKDIR /etc/docker/registry
