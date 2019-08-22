@@ -1,5 +1,8 @@
 # Docker registry
 
+ * 0.3.0
+  - Atualizando imagem base para pegar o registry `2.7.x`
+
  * 0.2.0
   - Habilitando log em formato JSON através da env `DOCKER_REGISTRY_ENABLE_JSON_LOGS`;
   - Possibilidade de escolher o loglevel: env `REGISTRY_LOG_LEVEL`.

@@ -1,6 +1,6 @@
-FROM registry:2.1.1
+FROM registry:2.7
 
-#Version: 0.2.0
+#Version: 0.3.0
 #Tag: sieve/registry
 
 WORKDIR /etc/docker/registry
@@ -16,4 +16,4 @@ ENTRYPOINT ["/e" \
 ]
 
 COPY files/registry-config.yml.tmpl /etc
-CMD ["/bin/registry", "/etc/docker/registry/config.yml"]
+CMD ["/bin/registry", "serve", "/etc/docker/registry/config.yml"]
