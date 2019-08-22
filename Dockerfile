@@ -16,4 +16,4 @@ ENTRYPOINT ["/e" \
 ]
 
 COPY files/registry-config.yml.tmpl /etc
-CMD ["/bin/registry", "/etc/docker/registry/config.yml"]
+CMD ["/bin/registry", "serve", "/etc/docker/registry/config.yml"]
