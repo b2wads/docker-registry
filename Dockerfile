@@ -6,6 +6,8 @@ FROM registry:2.7
 WORKDIR /etc/docker/registry
 WORKDIR /
 
+ENV REGISTRY_AUTH_HTPASSWD_REALM=Registry
+
 # Entrypoint
 COPY files/e /e
 RUN chmod 755 /e

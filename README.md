@@ -24,3 +24,13 @@ ENVs necessárias para essa imagem
     * REGISTRY_STORAGE_S3_BUCKET
 * DOCKER_REGISTRY_ENABLE_JSON_LOGS: Habilita a geração de logs em formato JSON
 * REGISTRY_LOG_LEVEL: Define o level desses logs JSON, defaults to "info"
+
+Autenticação
+------------
+
+
+* REGISTRY_AUTH=htpasswd
+* REGISTRY_AUTH_HTPASSWD_PATH=/etc/htpasswd
+* REGISTRY_AUTH_HTPASSWD_REALM
+
+A env REGISTRY_AUTH_HTPASSWD_REALM já está na imagem docker com valor default `Registry`.

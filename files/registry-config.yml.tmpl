@@ -1,10 +1,5 @@
 version: 0.1
 
-auth:
-  htpasswd:
-    realm: auth-realm
-    path: {{.REGISTRY_AUTH_FILE}}
-
 {{ if .DOCKER_REGISTRY_ENABLE_JSON_LOGS }}
 log:
   accesslog:
@@ -42,7 +37,7 @@ storage:
         bucket: {{.REGISTRY_STORAGE_S3_BUCKET}}
         encrypt: false
         secure: true
-        v4auth: false
+        v4auth: true
         chunksize: 5242880
         rootdirectory: images
 {{ end }}
