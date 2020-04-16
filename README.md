@@ -1,11 +1,17 @@
 # Docker registry
 
+ * 0.5.0
+    - Adicionar suporte a guardar os dados do Google Cloud Storage
+
+ * 0.4.0
+    - Adiciona suporte a passar auth via ENV VAR.
+
  * 0.3.0
-  - Atualizando imagem base para pegar o registry `2.7.x`
+    - Atualizando imagem base para pegar o registry `2.7.x`
 
  * 0.2.0
-  - Habilitando log em formato JSON através da env `DOCKER_REGISTRY_ENABLE_JSON_LOGS`;
-  - Possibilidade de escolher o loglevel: env `REGISTRY_LOG_LEVEL`.
+    - Habilitando log em formato JSON através da env `DOCKER_REGISTRY_ENABLE_JSON_LOGS`;
+    - Possibilidade de escolher o loglevel: env `REGISTRY_LOG_LEVEL`.
 
 
 
