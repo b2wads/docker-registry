@@ -13,7 +13,8 @@
 ENVs necessárias para essa imagem
 ==================================
 
-* REGISTRY_STORAGE_CACHE_ENABLE: Adiciona a seção de opções de cache de storage. Por enquando o unico cache possível é o redis.
+* REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=redis Para podermos escolher redis como cache
+* REGISTRY_REDIS_ADDR=IP:6379/<db> Define o endereço desse redis
 * REGISTRY_STORAGE_FILESYSTEM_ENABLE: Habilita o storage no filesystem
 * REGISTRY_STORAGE_FILESYSTEM_ROOT_DIR: indica qual a pasta no filesystem que será usada para guardar as imagens.
 * REGISTRY_REDIS_ADDRESS: Indica o endereço (IP:PORTA) do redis que será usado como cache
@@ -24,6 +25,27 @@ ENVs necessárias para essa imagem
     * REGISTRY_STORAGE_S3_BUCKET
 * DOCKER_REGISTRY_ENABLE_JSON_LOGS: Habilita a geração de logs em formato JSON
 * REGISTRY_LOG_LEVEL: Define o level desses logs JSON, defaults to "info"
+
+Storage no Google (GCS)
+-----------------------
+
+REGISTRY_STORAGE_GCS_ENABLE=1 Habilita do storage n GCS
+REGISTRY_STORAGE_GCS_BUCKET: Bucket do GCS onde os dados ficarão
+REGISTRY_STORAGE_GCS_CHUNKSIZE=5242880 essa config é do proprio registry. Valor padrão.
+REGISTRY_STORAGE_GCS_ROOTDIRECTORY: Prefixo aplicado ao bucket para salvar os dados
+
+As ENVs abaixo correspondem a cada um dos campos do JSON de credenciais que o Google gera.
+Aqui temos o json de exemplo apenas para sabermos campos, mas temos que passar apenas as ENVs (entre `{{}}`).
+{
+  "type": " .GCS_CREDENTIAL_TYPE ",
+  "project_id":"{{ .GCS_CREDENTIAL_PROJECT_ID }}",
+  "private_key_id": "{{ .GCS_CREDENTIAL_PRIVATE_KEY_ID }}",
+  "private_key": "{{ .GCS_CREDENTIAL_PRIVATE_KEY }}",
+  "client_email":"{{ .GCS_CREDENTIAL_CLIENT_EMAIL }}",
+  "client_id":"{{ .GCS_CREDENTIAL_CLIENT_ID }}",
+  "client_x509_cert_url":"{{ .GCS_CREDENTIAL_CLIENT_X509_CERT_URL }}"
+}
+
 
 Autenticação
 ------------
