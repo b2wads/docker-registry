@@ -28,9 +28,28 @@ ENVs necessárias para essa imagem
 Autenticação
 ------------
 
+A autenticação é obrigatória. É possível ter até 10 autenticações diferentes (usuários).
 
-* REGISTRY_AUTH=htpasswd
-* REGISTRY_AUTH_HTPASSWD_PATH=/etc/htpasswd
-* REGISTRY_AUTH_HTPASSWD_REALM
+Cada usuário é passado em uma ENV com prefixo `REGISTRY_HTPASSWD_RAW_ENTRY_`. O sufixo é um número, começando com `1`.
 
-A env REGISTRY_AUTH_HTPASSWD_REALM já está na imagem docker com valor default `Registry`.
+O total de autenticações está no `htpasswd.tmpl`.
+
+Como gerar o valor esperado ness ENV de autenticação
+----------------------------------------------------
+
+
+HOW TO ADD/EDIT A USER'S PASSWORD:
+
+1. install apache2-utils
+2. htpasswd -B -n <username>
+
+Nesse momento será pedida a senha, duas vezes. Ao final a string escrita na tela é o que deve ir para as ENVs `REGISTRY_HTPASSWD_RAW_ENTRY_*`.
+
+
+HOW TO VERIFY A GIVEN PASSWORD:
+
+1. Open the account.htpasswd file and find what user you cant to check
+2. Find what algorithm to use: Characters between the first and second dollar signs (exclude)
+3. Get the salt: Characters between the second and the third dollar sings (exclude)
+4. Run `openssl passwd -{algorithm} -salt {salt} {plainpassword}`
+5. Check the output inside the account.htpasswd file
